@@ -89,3 +89,9 @@ So please move the code directory and the data directory accordingly.
 For more information about the Munich scenario, see here: https://www.mos.ed.tum.de/en/tb/
 
 For more information about MATSim, see here: https://www.matsim.org/.
+
+
+## Internal documentation
+
+Internal documentation can be found here:
+[https://docs.google.com/document/d/133CuXaMuWL0NcstyFHodk4y7J5yFLy9nrLtbBVpNWzM/edit?usp=drive_link](https://docs.google.com/document/d/1V1sSQmq3voY5oQ2qiXbUXU5Bn_mze2BsSg1ecyRF0rw/edit)
