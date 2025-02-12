@@ -25,18 +25,19 @@
 			<!-- Geotools is not on Maven central -->
 			<id>osgeo</id>
 			<name>Geotools repository</name>
-			<url>http://download.osgeo.org/webdav/geotools</url>
+			<url>https://repo.osgeo.org/repository/release/</url>
 		</repository>
 		<repository>
 			<!-- Repository for MATSim releases (MATSim is not on Maven central) -->
 			<id>matsim</id>
 			<url>https://dl.bintray.com/matsim/matsim</url>
+<!--			<url>https://repo.matsim.org/repository/matsim</url>-->
 		</repository>
- 		<repository>
-			<!-- For MATSim snapshots: -->
-			<id>ojo-snapshots</id>
-			<url>http://oss.jfrog.org/libs-snapshot</url>
-		</repository>	
+<!-- 		<repository>-->
+<!--			&lt;!&ndash; For MATSim snapshots: &ndash;&gt;-->
+<!--			<id>ojo-snapshots</id>-->
+<!--			<url>http://oss.jfrog.org/libs-snapshot</url>-->
+<!--		</repository>	-->
 	</repositories>
 
 	<dependencies>
@@ -95,14 +96,15 @@
 					</compilerArguments>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>true</downloadJavadocs>
-				</configuration>
-			</plugin>
+<!--			maven and eclipse should work without the plugin! the plugin is caisung problems for me, so it is commented out -sme0225-->
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-eclipse-plugin</artifactId>-->
+<!--				<configuration>-->
+<!--					<downloadSources>true</downloadSources>-->
+<!--					<downloadJavadocs>true</downloadJavadocs>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>

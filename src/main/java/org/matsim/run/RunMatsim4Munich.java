@@ -71,8 +71,10 @@ public class RunMatsim4Munich{
 		} else{
 			throw new RuntimeException("need to provide path to config file. aborting ...") ;
 		}
+//		create different act types
 		MunichUtils.createActivityTypes( config );
 
+//		some vehicles are allowed to pass each other
 		config.qsim().setLinkDynamics( QSimConfigGroup.LinkDynamics.PassingQ );
 
 		return config ;
@@ -84,10 +86,12 @@ public class RunMatsim4Munich{
 		}
 		scenario = ScenarioUtils.loadScenario( config ) ;
 
+//		add car, ride, bike as allowed modes on all network links
 		for( Link link : scenario.getNetwork().getLinks().values() ){
 			link.setAllowedModes( new HashSet<>( Arrays.asList( TransportMode.car, TransportMode.bike, TransportMode.ride ) ) ) ;
 		}
 
+//		delete route for all bike legs
 		for( Person person : scenario.getPopulation().getPersons().values() ){
 			Plan plan = person.getSelectedPlan() ;
 			List<Leg> legs = TripStructureUtils.getLegs( plan );
