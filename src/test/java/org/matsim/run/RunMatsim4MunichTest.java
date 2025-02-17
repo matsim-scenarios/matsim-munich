@@ -18,10 +18,11 @@
  * *********************************************************************** */
 package org.matsim.run;
 
-import org.apache.log4j.Logger;
-import org.junit.Assert;
-import org.junit.Rule;
-import org.junit.Test;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
 import org.matsim.api.core.v01.TransportMode;
 import org.matsim.core.config.Config;
 import org.matsim.core.controler.OutputDirectoryHierarchy.OverwriteFileSetting;
@@ -35,23 +36,26 @@ import java.util.List;
  *
  */
 public class RunMatsim4MunichTest{
-	
-	@Rule public MatsimTestUtils utils = new MatsimTestUtils() ;
+
+	@RegisterExtension
+	public MatsimTestUtils utils = new MatsimTestUtils() ;
+
+	private static final Logger log = LogManager.getLogger(RunMatsim4MunichTest.class);
 
 	@Test
 	public final void test() {
 		try {
 			RunMatsim4Munich matsim = new RunMatsim4Munich( new String [] {"../../shared-svn/projects/matsim-munich/scenarios/v2/config_1pct_v2_WOModeChoice_reduced.xml"} ) ;
 			Config config = matsim.prepareConfig() ;
-			config.controler().setWriteEventsInterval(1); // so we get an output_events file
-			config.controler().setLastIteration(1);
-			config.controler().setOutputDirectory( utils.getOutputDirectory() );
+			config.controller().setWriteEventsInterval(1); // so we get an output_events file
+			config.controller().setLastIteration(1);
+			config.controller().setOutputDirectory( utils.getOutputDirectory() );
 			matsim.run() ;
 		} catch ( Exception ee ) {
-			Logger.getLogger(this.getClass()).fatal("there was an exception: \n" + ee ) ;
+			log.fatal("there was an exception: \n");
 			ee.printStackTrace();
 			// if one catches an exception, then one needs to explicitly fail the test:
-			Assert.fail();
+			Assertions.fail();
 		}
 	}
 	@Test
@@ -59,15 +63,15 @@ public class RunMatsim4MunichTest{
 		try {
 			RunMatsim4Munich matsim = new RunMatsim4Munich( new String [] {"../../shared-svn/projects/matsim-munich/scenarios/v2/config_1pct_v2_WModeChoice_reduced.xml"} ) ;
 			Config config = matsim.prepareConfig() ;
-			config.controler().setWriteEventsInterval(1); // so we get an output_events file
-			config.controler().setLastIteration(1);
-			config.controler().setOutputDirectory( utils.getOutputDirectory() );
+			config.controller().setWriteEventsInterval(1); // so we get an output_events file
+			config.controller().setLastIteration(1);
+			config.controller().setOutputDirectory( utils.getOutputDirectory() );
 			matsim.run() ;
 		} catch ( Exception ee ) {
-			Logger.getLogger(this.getClass()).fatal("there was an exception: \n" + ee ) ;
+			log.fatal("there was an exception: \n");
 			ee.printStackTrace();
 			// if one catches an exception, then one needs to explicitly fail the test:
-			Assert.fail();
+			Assertions.fail();
 		}
 
 
