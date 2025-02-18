@@ -18,16 +18,13 @@
  * *********************************************************************** */
 package org.matsim.run;
 
-import org.apache.log4j.Logger;
-import org.junit.Assert;
-import org.junit.Rule;
-import org.junit.Test;
-import org.matsim.api.core.v01.Scenario;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
 import org.matsim.core.config.Config;
-import org.matsim.core.config.ConfigUtils;
-import org.matsim.core.controler.Controler;
-import org.matsim.core.controler.OutputDirectoryHierarchy.OverwriteFileSetting;
-import org.matsim.core.scenario.ScenarioUtils;
+import org.matsim.core.controler.OutputDirectoryHierarchy;
 import org.matsim.testcases.MatsimTestUtils;
 
 /**
@@ -36,23 +33,26 @@ import org.matsim.testcases.MatsimTestUtils;
  */
 public class RunMatsim4MunichWEquilTest{
 	
-	@Rule public MatsimTestUtils utils = new MatsimTestUtils() ;
+	@RegisterExtension
+	public MatsimTestUtils utils = new MatsimTestUtils() ;
+
+	private static Logger log = LogManager.getLogger(RunMatsim4MunichTest.class);
 
 	@Test
 	public final void test() {
 		try {
 			RunMatsim4Munich matsim = new RunMatsim4Munich( new String [] {"scenarios/equil/config.xml"} ) ;
 			Config config = matsim.prepareConfig() ;
-			config.controler().setWriteEventsInterval(1);
-			config.controler().setLastIteration(1);
-			config.controler().setOutputDirectory( utils.getOutputDirectory() );
-			config.controler().setOverwriteFileSetting(OverwriteFileSetting.deleteDirectoryIfExists);
+			config.controller().setWriteEventsInterval(1);
+			config.controller().setLastIteration(1);
+			config.controller().setOutputDirectory( utils.getOutputDirectory() );
+			config.controller().setOverwriteFileSetting(OutputDirectoryHierarchy.OverwriteFileSetting.deleteDirectoryIfExists);
 			matsim.run() ;
 		} catch ( Exception ee ) {
-			Logger.getLogger(this.getClass()).fatal("there was an exception: \n" + ee ) ;
+			log.fatal("there was an exception: \n") ;
 			ee.printStackTrace();
 			// if one catches an exception, then one needs to explicitly fail the test:
-			Assert.fail();
+			Assertions.fail();
 		}
 
 
