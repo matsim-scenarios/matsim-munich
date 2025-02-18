@@ -41,6 +41,7 @@ public class RunMatsim4MunichWEquilTest{
 	@Test
 	public final void test() {
 		try {
+//			URL context = org.matsim.examples.ExamplesUtils.getTestScenarioURL( "equil" );
 			RunMatsim4Munich matsim = new RunMatsim4Munich( new String [] {"scenarios/equil/config.xml"} ) ;
 			Config config = matsim.prepareConfig() ;
 			config.controller().setWriteEventsInterval(1);

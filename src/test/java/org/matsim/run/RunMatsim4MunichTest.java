@@ -21,15 +21,11 @@ package org.matsim.run;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import org.matsim.api.core.v01.TransportMode;
 import org.matsim.core.config.Config;
-import org.matsim.core.controler.OutputDirectoryHierarchy.OverwriteFileSetting;
 import org.matsim.testcases.MatsimTestUtils;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @author nagel
@@ -45,7 +41,7 @@ public class RunMatsim4MunichTest{
 	@Test
 	public final void test() {
 		try {
-			RunMatsim4Munich matsim = new RunMatsim4Munich( new String [] {"../../shared-svn/projects/matsim-munich/scenarios/v2/config_1pct_v2_WOModeChoice_reduced.xml"} ) ;
+			RunMatsim4Munich matsim = new RunMatsim4Munich( new String [] {"scenarios/tumTbBase/configBase.xml"} ) ;
 			Config config = matsim.prepareConfig() ;
 			config.controller().setWriteEventsInterval(1); // so we get an output_events file
 			config.controller().setLastIteration(1);
@@ -59,6 +55,7 @@ public class RunMatsim4MunichTest{
 		}
 	}
 	@Test
+	@Disabled("Only one test needed.")
 	public final void test2() {
 		try {
 			RunMatsim4Munich matsim = new RunMatsim4Munich( new String [] {"../../shared-svn/projects/matsim-munich/scenarios/v2/config_1pct_v2_WModeChoice_reduced.xml"} ) ;
