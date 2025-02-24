@@ -3,8 +3,8 @@
 <config>
     <module name="controler">
         <param name="firstIteration" value="0"/>
-        <param name="lastIteration" value="50"/>
-        <param name="overwriteFiles" value="deleteDirectoryIfExists"/>
+        <param name="lastIteration" value="100"/>
+        <param name="overwriteFiles" value="failIfDirectoryExists"/>
         <param name="runId" value="test"/>
     </module>
 
