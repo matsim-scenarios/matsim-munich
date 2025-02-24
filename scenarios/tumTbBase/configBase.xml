@@ -5,7 +5,8 @@
         <param name="firstIteration" value="0"/>
         <param name="lastIteration" value="100"/>
         <param name="overwriteFiles" value="failIfDirectoryExists"/>
-        <param name="runId" value="test"/>
+        <param name="runId" value="munich"/>
+        <param name="outputDirectory" value="output-munich-agimo" />
     </module>
 
     <module name="network">
